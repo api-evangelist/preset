@@ -1,0 +1,79 @@
+aid: preset
+name: Preset
+review:
+  question: Does Preset expose a documented public WebSocket or streaming API?
+  answer: false
+  date: '2026-06-20'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Preset's documented API surface is
+    entirely synchronous HTTPS REST: the Preset Manager API at
+    https://api.app.preset.io and the per-workspace proxy to the Apache
+    Superset REST API at {workspace-slug}.{region}.app.preset.io. No
+    WebSocket (ws/wss) surface and no Server-Sent Events stream are
+    documented. SQL Lab supports asynchronous queries, but results are
+    polled over REST rather than pushed over a streaming transport, so
+    there is no AsyncAPI-modelable channel.
+findings:
+  summary: |
+    Preset does not publish a documented public WebSocket or SSE API. Auth is
+    a JWT exchange (POST /v1/auth/ with an API token name and secret),
+    returning a bearer token valid for a few hours. The Manager API handles
+    teams, workspaces, users, and guest tokens (guest tokens expire in about
+    five minutes for embedded dashboards). Workspace-level operations are a
+    transparent proxy to the underlying Apache Superset REST API at the
+    workspace hostname, covering dashboards, charts, datasets, databases, and
+    SQL Lab. Existing Superset API clients work against Preset with minimal
+    changes.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.app.preset.io
+      documented: true
+    - protocol: REST
+      scheme: https
+      baseURL: https://{workspace-slug}.{region}.app.preset.io/api/v1
+      note: Per-workspace proxy to the Apache Superset REST API.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented for Preset Manager or the Superset proxy.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events stream is documented; async SQL Lab results are polled over REST.
+  endpointsConfirmedRest:
+    - POST   https://api.app.preset.io/v1/auth/
+    - GET    https://api.app.preset.io/v1/teams/
+    - GET    https://api.app.preset.io/v1/teams/{team}/workspaces/
+    - POST   https://api.app.preset.io/v1/teams/{team}/workspaces/
+    - POST   https://api.app.preset.io/v1/teams/{team}/workspaces/{workspace}/guest-token/
+    - GET    https://{workspace}.{region}.app.preset.io/api/v1/dashboard/
+    - POST   https://{workspace}.{region}.app.preset.io/api/v1/dashboard/
+    - GET    https://{workspace}.{region}.app.preset.io/api/v1/chart/
+    - POST   https://{workspace}.{region}.app.preset.io/api/v1/chart/data
+    - GET    https://{workspace}.{region}.app.preset.io/api/v1/dataset/
+    - GET    https://{workspace}.{region}.app.preset.io/api/v1/database/
+    - POST   https://{workspace}.{region}.app.preset.io/api/v1/sqllab/execute/
+sources:
+  - url: https://api-docs.preset.io/
+    type: APIReference
+    note: Interactive Preset API reference covering auth, teams, workspaces, and Superset endpoints.
+  - url: https://docs.preset.io/docs/using-the-api
+    type: Documentation
+    note: Describes the JWT auth exchange and Manager vs Superset API surfaces.
+  - url: https://preset-io.github.io/embedded-beta-docs/v1.html
+    type: Documentation
+    note: Guest-token endpoint and workspace hostname pattern for embedded dashboards.
+  - url: https://superset.apache.org/docs/api
+    type: APIReference
+    note: Canonical Apache Superset REST API the Preset workspace proxy exposes.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists, so no AsyncAPI document was
+    authored. The catalog models the synchronous REST surfaces only: the
+    Preset Manager API and the per-workspace Superset REST proxy.

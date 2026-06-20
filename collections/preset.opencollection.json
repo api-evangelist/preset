@@ -1,0 +1,180 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Preset API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exchange API token for JWT",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/v1/auth/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"{{apiTokenName}}\",\n  \"secret\": \"{{apiTokenSecret}}\"\n}"
+            }
+          },
+          "docs": "Exchanges an API token name and secret for a short-lived JWT access token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Teams and Workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.app.preset.io/v1/teams/"
+          },
+          "docs": "Lists the teams the authenticated principal belongs to."
+        },
+        {
+          "info": {
+            "name": "List workspaces in a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.app.preset.io/v1/teams/{{teamName}}/workspaces/"
+          },
+          "docs": "Lists workspaces in a team, including each workspace name (slug) and region."
+        },
+        {
+          "info": {
+            "name": "Create a workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/v1/teams/{{teamName}}/workspaces/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"title\": \"My Workspace\",\n  \"region\": \"us2a\"\n}"
+            }
+          },
+          "docs": "Creates a new Superset-backed workspace in a team."
+        },
+        {
+          "info": {
+            "name": "Create a guest token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/v1/teams/{{teamName}}/workspaces/{{workspaceName}}/guest-token/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"user\": {},\n  \"resources\": [],\n  \"rls\": []\n}"
+            }
+          },
+          "docs": "Mints a short-lived guest token for an embedded dashboard."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Superset Proxy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List dashboards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/dashboard/"
+          },
+          "docs": "Per-workspace proxy to the Superset Dashboard API."
+        },
+        {
+          "info": {
+            "name": "List charts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/chart/"
+          },
+          "docs": "Per-workspace proxy to the Superset Chart API."
+        },
+        {
+          "info": {
+            "name": "Query chart data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/chart/data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a chart data query and returns the result payload."
+        },
+        {
+          "info": {
+            "name": "List datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/dataset/"
+          },
+          "docs": "Per-workspace proxy to the Superset Dataset API."
+        },
+        {
+          "info": {
+            "name": "List databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/database/"
+          },
+          "docs": "Per-workspace proxy to the Superset Database API."
+        },
+        {
+          "info": {
+            "name": "Execute SQL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/sqllab/execute/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"database_id\": 1,\n  \"sql\": \"SELECT 1\",\n  \"schema\": \"public\",\n  \"runAsync\": false\n}"
+            }
+          },
+          "docs": "Per-workspace proxy to the Superset SQL Lab execute endpoint."
+        }
+      ]
+    }
+  ]
+}

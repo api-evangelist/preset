@@ -1,0 +1,155 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Preset
+providerId: preset
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: true
+tags:
+- BI
+- Analytics
+- Superset
+- Dashboards
+- Data Visualization
+- Plans
+description: >-
+  Preset uses a per-user subscription model with three published tiers:
+  Starter (free, up to 5 users, 1 workspace), Professional ($20/user/month
+  billed annually or $25/user/month billed monthly, unlimited users, 3
+  workspaces), and Enterprise (custom pricing). Programmatic API access is an
+  Enterprise add-on, as are embedded dashboards (sold in viewer-license packs).
+notes: >-
+  Pricing captured from the Preset pricing page. Per-user rates and add-on
+  prices change; verify against preset.io/pricing during reconciliation.
+sources:
+- https://www.preset.io/pricing
+- https://docs.preset.io
+plans:
+- id: preset-starter
+  name: Starter
+  type: free
+  description: >-
+    Free forever tier for up to 5 users with one workspace, unlimited
+    dashboards and charts, 40+ visualization types, no-code chart builder,
+    collaborative SQL editor, and the semantic layer.
+  entries:
+  - label: Users
+    name: users
+    type: flat
+    metric: users
+    limit: 5
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  - label: Workspaces
+    name: workspaces
+    type: flat
+    metric: workspaces
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Unlimited Dashboards and Charts
+  - name: 40+ Visualization Types
+  - name: No-Code Chart Builder
+  - name: Collaborative SQL Editor
+  - name: Semantic Layer
+- id: preset-professional
+  name: Professional
+  type: subscription
+  description: >-
+    Per-user subscription with unlimited users, 3 workspaces, role-based
+    access controls, scheduled email reports and alerts, Slack integration,
+    multi-region support, and standard support.
+  entries:
+  - label: Per User (Annual)
+    name: per_user_annual
+    type: flat
+    metric: users
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $20 per user / month billed annually
+    userMultiplied: true
+  - label: Per User (Monthly)
+    name: per_user_monthly
+    type: flat
+    metric: users
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $25 per user / month billed monthly
+    userMultiplied: true
+  - label: Workspaces
+    name: workspaces
+    type: flat
+    metric: workspaces
+    limit: 3
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Embedded Dashboards Add-on
+    name: embedded_addon
+    type: flat
+    metric: viewer_licenses
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 50
+    price: $500 per month for 50 viewer licenses
+    userMultiplied: false
+  elements:
+  - name: Unlimited Users
+  - name: Role-Based Access Controls
+  - name: Scheduled Email Reports and Alerts
+  - name: Slack Integration
+  - name: Multi-Region Support
+- id: preset-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom-priced tier adding additional workspaces, dbt integration, Managed
+    Private Cloud deployment, SSH tunnel database connections, SSO + SCIM,
+    audit logs, usage metrics, enterprise SLA, and programmatic API access as
+    an add-on. Contact sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: API Access Add-on
+    name: api_access
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: add-on, contact sales
+    userMultiplied: false
+  elements:
+  - name: REST API Access
+  - name: SSO and SCIM
+  - name: dbt Integration
+  - name: Managed Private Cloud
+  - name: Audit Logs and Usage Metrics
+  - name: Enterprise SLA
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

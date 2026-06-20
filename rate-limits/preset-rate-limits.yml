@@ -1,0 +1,69 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Preset
+providerId: preset
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- BI
+- Analytics
+- Superset
+- Dashboards
+- Data Visualization
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Preset does not publish explicit numeric request-per-minute rate limits for
+  its Manager API or the per-workspace Superset proxy. Practical limits come
+  from JWT token lifetime (the auth token is valid for a few hours and must be
+  re-exchanged), guest-token lifetime (about five minutes, requiring refresh),
+  plan-level entitlements (user counts, workspace counts), and the compute
+  capacity of the underlying Superset workspace for query and chart-data
+  endpoints. Enterprise agreements may define additional throughput terms.
+notes: >-
+  No numeric per-minute limits are published. Confirm any account- or
+  workspace-level throttling and Enterprise throughput terms with Preset
+  during reconciliation.
+sources:
+- https://docs.preset.io/docs/using-the-api
+- https://api-docs.preset.io/
+- https://www.preset.io/pricing
+responseCodes:
+  throttled: 429
+limits:
+- name: Auth Token Lifetime
+  scope: account
+  metric: token_ttl
+  limit: a few hours
+  notes: JWT from POST /v1/auth/ expires after a few hours; re-exchange the API token name and secret to refresh.
+- name: Guest Token Lifetime
+  scope: workspace
+  metric: token_ttl
+  limit: ~5 minutes
+  notes: Embedded-dashboard guest tokens expire after about five minutes and must be refreshed by the front-end.
+- name: Workspace Quota
+  scope: account
+  metric: workspaces
+  limit: plan-dependent
+  notes: 1 workspace on Starter, 3 on Professional, additional on Enterprise.
+- name: User Quota
+  scope: account
+  metric: users
+  limit: plan-dependent
+  notes: Up to 5 users on Starter; unlimited on Professional and Enterprise.
+- name: Superset Proxy Throughput
+  scope: workspace
+  metric: requests
+  limit: see provider documentation
+  notes: Chart-data and SQL Lab endpoints are bounded by the workspace's underlying Superset compute, not a published RPM.
+policies:
+- name: Token Refresh
+  description: Re-exchange API credentials at /v1/auth/ before the JWT expires; refresh guest tokens on a short interval for embeds.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

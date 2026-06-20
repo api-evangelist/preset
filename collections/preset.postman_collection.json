@@ -1,0 +1,236 @@
+{
+  "info": {
+    "name": "Preset API",
+    "description": "Preset is a managed cloud BI and analytics platform powered by Apache Superset. This collection covers the Preset Manager API (auth, teams, workspaces, guest tokens) and the per-workspace proxy to the Apache Superset REST API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "managerUrl",
+      "value": "https://api.app.preset.io"
+    },
+    {
+      "key": "workspaceSlug",
+      "value": "my-workspace"
+    },
+    {
+      "key": "region",
+      "value": "us2a"
+    },
+    {
+      "key": "teamName",
+      "value": "my-team"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Exchange API token for JWT",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{managerUrl}}/v1/auth/",
+              "host": ["{{managerUrl}}"],
+              "path": ["v1", "auth", ""]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{apiTokenName}}\",\n  \"secret\": \"{{apiTokenSecret}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Exchanges an API token name and secret for a short-lived JWT access token."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Teams and Workspaces",
+      "item": [
+        {
+          "name": "List teams",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{managerUrl}}/v1/teams/",
+              "host": ["{{managerUrl}}"],
+              "path": ["v1", "teams", ""]
+            },
+            "description": "Lists the teams the authenticated principal belongs to."
+          }
+        },
+        {
+          "name": "List workspaces in a team",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{managerUrl}}/v1/teams/{{teamName}}/workspaces/",
+              "host": ["{{managerUrl}}"],
+              "path": ["v1", "teams", "{{teamName}}", "workspaces", ""]
+            },
+            "description": "Lists workspaces in a team, including each workspace name (slug) and region."
+          }
+        },
+        {
+          "name": "Create a workspace",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{managerUrl}}/v1/teams/{{teamName}}/workspaces/",
+              "host": ["{{managerUrl}}"],
+              "path": ["v1", "teams", "{{teamName}}", "workspaces", ""]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"My Workspace\",\n  \"region\": \"us2a\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Creates a new Superset-backed workspace in a team."
+          }
+        },
+        {
+          "name": "Create a guest token",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{managerUrl}}/v1/teams/{{teamName}}/workspaces/{{workspaceSlug}}/guest-token/",
+              "host": ["{{managerUrl}}"],
+              "path": ["v1", "teams", "{{teamName}}", "workspaces", "{{workspaceSlug}}", "guest-token", ""]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {},\n  \"resources\": [],\n  \"rls\": []\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Mints a short-lived guest token for an embedded dashboard."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Superset Proxy",
+      "item": [
+        {
+          "name": "List dashboards",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/dashboard/",
+              "protocol": "https",
+              "host": ["{{workspaceSlug}}", "{{region}}", "app", "preset", "io"],
+              "path": ["api", "v1", "dashboard", ""]
+            },
+            "description": "Per-workspace proxy to the Superset Dashboard API."
+          }
+        },
+        {
+          "name": "List charts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/chart/",
+              "protocol": "https",
+              "host": ["{{workspaceSlug}}", "{{region}}", "app", "preset", "io"],
+              "path": ["api", "v1", "chart", ""]
+            },
+            "description": "Per-workspace proxy to the Superset Chart API."
+          }
+        },
+        {
+          "name": "Query chart data",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/chart/data",
+              "protocol": "https",
+              "host": ["{{workspaceSlug}}", "{{region}}", "app", "preset", "io"],
+              "path": ["api", "v1", "chart", "data"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Executes a chart data query and returns the result payload."
+          }
+        },
+        {
+          "name": "List datasets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/dataset/",
+              "protocol": "https",
+              "host": ["{{workspaceSlug}}", "{{region}}", "app", "preset", "io"],
+              "path": ["api", "v1", "dataset", ""]
+            },
+            "description": "Per-workspace proxy to the Superset Dataset API."
+          }
+        },
+        {
+          "name": "List databases",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/database/",
+              "protocol": "https",
+              "host": ["{{workspaceSlug}}", "{{region}}", "app", "preset", "io"],
+              "path": ["api", "v1", "database", ""]
+            },
+            "description": "Per-workspace proxy to the Superset Database API."
+          }
+        },
+        {
+          "name": "Execute SQL",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://{{workspaceSlug}}.{{region}}.app.preset.io/api/v1/sqllab/execute/",
+              "protocol": "https",
+              "host": ["{{workspaceSlug}}", "{{region}}", "app", "preset", "io"],
+              "path": ["api", "v1", "sqllab", "execute", ""]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"database_id\": 1,\n  \"sql\": \"SELECT 1\",\n  \"schema\": \"public\",\n  \"runAsync\": false\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Per-workspace proxy to the Superset SQL Lab execute endpoint."
+          }
+        }
+      ]
+    }
+  ]
+}

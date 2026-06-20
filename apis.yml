@@ -1,0 +1,187 @@
+aid: preset
+url: https://raw.githubusercontent.com/api-evangelist/preset/refs/heads/main/apis.yml
+name: Preset
+kind: company
+description: Preset is a managed cloud BI and analytics platform powered by Apache
+  Superset. Its REST API combines a Preset Manager surface (authentication, teams,
+  workspaces, users, guest tokens) at https://api.app.preset.io with a per-workspace
+  proxy to the underlying Superset REST API for charts, dashboards, datasets,
+  databases, and SQL Lab.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- BI
+- Analytics
+- Superset
+- Dashboards
+- Data Visualization
+created: '2026-06-20'
+modified: '2026-06-20'
+specificationVersion: '0.19'
+apis:
+- aid: preset:preset-auth-api
+  name: Preset Auth API
+  tags:
+  - Authentication
+  - JWT
+  - API Token
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api-docs.preset.io/
+  baseURL: https://api.app.preset.io/v1
+  properties:
+  - url: https://docs.preset.io/docs/using-the-api
+    type: Documentation
+  - url: https://api-docs.preset.io/
+    type: APIReference
+  - url: openapi/preset-openapi.yml
+    type: OpenAPI
+  - url: collections/preset.postman_collection.json
+    type: PostmanCollection
+  description: Exchanges an API token name and secret for a short-lived JWT access
+    token via POST /v1/auth/. The returned bearer token authenticates all subsequent
+    Preset Manager and Superset proxy requests.
+- aid: preset:preset-teams-workspaces-api
+  name: Preset Teams and Workspaces API
+  tags:
+  - Teams
+  - Workspaces
+  - Users
+  - Guest Tokens
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api-docs.preset.io/
+  baseURL: https://api.app.preset.io/v1
+  properties:
+  - url: https://docs.preset.io/docs/using-the-api
+    type: Documentation
+  - url: https://api-docs.preset.io/
+    type: APIReference
+  - url: openapi/preset-openapi.yml
+    type: OpenAPI
+  - url: collections/preset.postman_collection.json
+    type: PostmanCollection
+  description: Preset Manager endpoints for listing teams, listing and creating
+    workspaces within a team, managing team membership, and minting guest tokens
+    for embedded dashboards via POST /v1/teams/{team}/workspaces/{workspace}/guest-token/.
+- aid: preset:preset-superset-dashboards-api
+  name: Preset Superset Dashboards API
+  tags:
+  - Superset Proxy
+  - Dashboards
+  - BI
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://superset.apache.org/docs/api
+  baseURL: https://{workspace-slug}.{region}.app.preset.io/api/v1
+  properties:
+  - url: https://docs.preset.io/docs/using-the-api
+    type: Documentation
+  - url: https://superset.apache.org/docs/api
+    type: APIReference
+  - url: openapi/preset-openapi.yml
+    type: OpenAPI
+  - url: collections/preset.postman_collection.json
+    type: PostmanCollection
+  description: Per-workspace proxy to the Apache Superset Dashboard REST API
+    (/api/v1/dashboard/) for listing, creating, reading, updating, deleting, and
+    exporting dashboards as code. Reached at the workspace hostname pattern
+    {workspace-slug}.{region}.app.preset.io.
+- aid: preset:preset-superset-charts-api
+  name: Preset Superset Charts API
+  tags:
+  - Superset Proxy
+  - Charts
+  - Visualization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://superset.apache.org/docs/api
+  baseURL: https://{workspace-slug}.{region}.app.preset.io/api/v1
+  properties:
+  - url: https://docs.preset.io/docs/using-the-api
+    type: Documentation
+  - url: https://superset.apache.org/docs/api
+    type: APIReference
+  - url: openapi/preset-openapi.yml
+    type: OpenAPI
+  - url: collections/preset.postman_collection.json
+    type: PostmanCollection
+  description: Per-workspace proxy to the Apache Superset Chart REST API
+    (/api/v1/chart/) for CRUD on charts, chart data queries, and import/export of
+    charts as code within a Preset workspace.
+- aid: preset:preset-superset-datasets-api
+  name: Preset Superset Datasets API
+  tags:
+  - Superset Proxy
+  - Datasets
+  - Semantic Layer
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://superset.apache.org/docs/api
+  baseURL: https://{workspace-slug}.{region}.app.preset.io/api/v1
+  properties:
+  - url: https://docs.preset.io/docs/using-the-api
+    type: Documentation
+  - url: https://superset.apache.org/docs/api
+    type: APIReference
+  - url: openapi/preset-openapi.yml
+    type: OpenAPI
+  - url: collections/preset.postman_collection.json
+    type: PostmanCollection
+  description: Per-workspace proxy to the Apache Superset Dataset REST API
+    (/api/v1/dataset/) for managing physical and virtual datasets, columns,
+    metrics, and the semantic layer.
+- aid: preset:preset-superset-databases-api
+  name: Preset Superset Databases API
+  tags:
+  - Superset Proxy
+  - Databases
+  - Connections
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://superset.apache.org/docs/api
+  baseURL: https://{workspace-slug}.{region}.app.preset.io/api/v1
+  properties:
+  - url: https://docs.preset.io/docs/using-the-api
+    type: Documentation
+  - url: https://superset.apache.org/docs/api
+    type: APIReference
+  - url: openapi/preset-openapi.yml
+    type: OpenAPI
+  - url: collections/preset.postman_collection.json
+    type: PostmanCollection
+  description: Per-workspace proxy to the Apache Superset Database REST API
+    (/api/v1/database/) for managing data source connections, testing
+    connectivity, and listing schemas and tables.
+- aid: preset:preset-superset-sqllab-api
+  name: Preset Superset SQL Lab API
+  tags:
+  - Superset Proxy
+  - SQL Lab
+  - Query
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://superset.apache.org/docs/api
+  baseURL: https://{workspace-slug}.{region}.app.preset.io/api/v1
+  properties:
+  - url: https://docs.preset.io/docs/using-the-api
+    type: Documentation
+  - url: https://superset.apache.org/docs/api
+    type: APIReference
+  - url: openapi/preset-openapi.yml
+    type: OpenAPI
+  - url: collections/preset.postman_collection.json
+    type: PostmanCollection
+  description: Per-workspace proxy to the Apache Superset SQL Lab REST API
+    (/api/v1/sqllab/execute/) for executing ad hoc SQL against connected databases
+    and retrieving query results.
+common:
+- type: GitHubOrganization
+  url: https://github.com/preset-io
+- type: LinkedIn
+  url: https://www.linkedin.com/company/preset-data
+- type: Website
+  url: https://www.preset.io
+- type: Documentation
+  url: https://docs.preset.io
+- type: Plans
+  url: plans/preset-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/preset-rate-limits.yml
+- type: FinOps
+  url: finops/preset-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
