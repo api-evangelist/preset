@@ -168,6 +168,10 @@ apis:
     (/api/v1/sqllab/execute/) for executing ad hoc SQL against connected databases
     and retrieving query results.
 common:
+- type: DomainSecurity
+  url: security/preset-domain-security.yml
+- type: Authentication
+  url: authentication/preset-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/preset-io
 - type: LinkedIn

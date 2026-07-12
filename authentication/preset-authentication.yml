@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/preset-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: 'JWT obtained from POST /v1/auth/ by exchanging an API token name and secret.
+    Passed as Authorization: Bearer <token>.'
+  sources:
+  - openapi/preset-openapi.yml
