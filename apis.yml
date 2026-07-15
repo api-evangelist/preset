@@ -168,6 +168,8 @@ apis:
     (/api/v1/sqllab/execute/) for executing ad hoc SQL against connected databases
     and retrieving query results.
 common:
+- type: AgenticAccess
+  url: agentic-access/preset-agentic-access.yml
 - type: DomainSecurity
   url: security/preset-domain-security.yml
 - type: Authentication
