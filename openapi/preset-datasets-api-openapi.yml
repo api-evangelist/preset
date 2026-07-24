@@ -1,0 +1,128 @@
+openapi: 3.0.1
+info:
+  title: Preset Authentication Datasets API
+  description: 'Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.'
+  termsOfService: https://preset.io/terms-and-conditions/
+  contact:
+    name: Preset Support
+    url: https://docs.preset.io
+  version: '1.0'
+servers:
+- url: https://api.app.preset.io
+  description: Preset Manager API (authentication, teams, workspaces, guest tokens)
+- url: https://{workspaceSlug}.{region}.app.preset.io
+  description: Per-workspace proxy to the Apache Superset REST API
+  variables:
+    workspaceSlug:
+      default: my-workspace
+      description: The workspace slug returned by the workspaces endpoint
+    region:
+      default: us2a
+      description: The workspace region (e.g. us2a)
+tags:
+- name: Datasets
+paths:
+  /api/v1/dataset/:
+    get:
+      operationId: getDatasets
+      tags:
+      - Datasets
+      summary: List datasets (Superset proxy)
+      description: Per-workspace proxy to the Apache Superset Dataset API.
+      servers:
+      - url: https://{workspaceSlug}.{region}.app.preset.io
+        variables:
+          workspaceSlug:
+            default: my-workspace
+          region:
+            default: us2a
+      security:
+      - bearerAuth: []
+      parameters:
+      - $ref: '#/components/parameters/RisonQuery'
+      responses:
+        '200':
+          description: A page of datasets.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupersetListResponse'
+    post:
+      operationId: createDataset
+      tags:
+      - Datasets
+      summary: Create a dataset (Superset proxy)
+      servers:
+      - url: https://{workspaceSlug}.{region}.app.preset.io
+        variables:
+          workspaceSlug:
+            default: my-workspace
+          region:
+            default: us2a
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: The created dataset.
+  /api/v1/dataset/{pk}:
+    get:
+      operationId: getDataset
+      tags:
+      - Datasets
+      summary: Get a dataset by id (Superset proxy)
+      servers:
+      - url: https://{workspaceSlug}.{region}.app.preset.io
+        variables:
+          workspaceSlug:
+            default: my-workspace
+          region:
+            default: us2a
+      security:
+      - bearerAuth: []
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: A single dataset.
+components:
+  parameters:
+    RisonQuery:
+      name: q
+      in: query
+      required: false
+      description: Superset Rison/JSON-encoded query for filtering, ordering, and pagination.
+      schema:
+        type: string
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The Superset object primary key (id).
+      schema:
+        type: integer
+  schemas:
+    SupersetListResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        ids:
+          type: array
+          items:
+            type: integer
+        result:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'JWT obtained from POST /v1/auth/ by exchanging an API token name and secret. Passed as Authorization: Bearer <token>.'

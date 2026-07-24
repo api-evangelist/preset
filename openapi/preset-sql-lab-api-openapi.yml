@@ -1,0 +1,73 @@
+openapi: 3.0.1
+info:
+  title: Preset Authentication SQL Lab API
+  description: 'Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.'
+  termsOfService: https://preset.io/terms-and-conditions/
+  contact:
+    name: Preset Support
+    url: https://docs.preset.io
+  version: '1.0'
+servers:
+- url: https://api.app.preset.io
+  description: Preset Manager API (authentication, teams, workspaces, guest tokens)
+- url: https://{workspaceSlug}.{region}.app.preset.io
+  description: Per-workspace proxy to the Apache Superset REST API
+  variables:
+    workspaceSlug:
+      default: my-workspace
+      description: The workspace slug returned by the workspaces endpoint
+    region:
+      default: us2a
+      description: The workspace region (e.g. us2a)
+tags:
+- name: SQL Lab
+paths:
+  /api/v1/sqllab/execute/:
+    post:
+      operationId: executeSql
+      tags:
+      - SQL Lab
+      summary: Execute a SQL query (Superset proxy)
+      description: Per-workspace proxy to the Apache Superset SQL Lab execute endpoint. Runs an ad hoc SQL query against a connected database and returns the result set or an async query id.
+      servers:
+      - url: https://{workspaceSlug}.{region}.app.preset.io
+        variables:
+          workspaceSlug:
+            default: my-workspace
+          region:
+            default: us2a
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SqlExecuteRequest'
+      responses:
+        '200':
+          description: Query results.
+        '202':
+          description: Async query accepted.
+components:
+  schemas:
+    SqlExecuteRequest:
+      type: object
+      required:
+      - database_id
+      - sql
+      properties:
+        database_id:
+          type: integer
+        sql:
+          type: string
+        schema:
+          type: string
+        runAsync:
+          type: boolean
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'JWT obtained from POST /v1/auth/ by exchanging an API token name and secret. Passed as Authorization: Bearer <token>.'
