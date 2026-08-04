@@ -1,0 +1,28 @@
+{
+  "provider": "preset",
+  "sources": [
+    "preset-authentication-api-openapi.yml",
+    "preset-charts-api-openapi.yml",
+    "preset-dashboards-api-openapi.yml",
+    "preset-databases-api-openapi.yml",
+    "preset-datasets-api-openapi.yml",
+    "preset-sql-lab-api-openapi.yml",
+    "preset-teams-api-openapi.yml",
+    "preset-workspaces-api-openapi.yml"
+  ],
+  "outputs": [
+    "preset-authentication-api-openapi.yml",
+    "preset-charts-api-openapi.yml",
+    "preset-dashboards-api-openapi.yml",
+    "preset-databases-api-openapi.yml",
+    "preset-datasets-api-openapi.yml",
+    "preset-sql-lab-api-openapi.yml",
+    "preset-teams-api-openapi.yml",
+    "preset-workspaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
