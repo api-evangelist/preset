@@ -1,0 +1,496 @@
+{
+  "item": [
+    {
+      "id": "dc2dc653-76ae-4793-939a-50eac5294e83",
+      "name": "Charts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4bd0c65-d871-4a22-8d5a-1d6d63835c12",
+          "name": "List charts (Superset proxy)",
+          "request": {
+            "name": "List charts (Superset proxy)",
+            "description": {
+              "content": "Per-workspace proxy to the Apache Superset Chart API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "chart",
+                ""
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Superset Rison/JSON-encoded query for filtering, ordering, and pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "90020ca9-b748-4e23-882e-7692431a9d89",
+              "name": "A page of charts.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "chart",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1934,\n  \"ids\": [\n    5864,\n    3968\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8ba1091-a91e-4408-bce3-e731ecbaaf59",
+          "name": "Create a chart (Superset proxy)",
+          "request": {
+            "name": "Create a chart (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "chart",
+                ""
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30a10390-01d1-49c8-978a-da0e6cd7ae32",
+              "name": "The created chart.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "chart",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7849e5b4-616b-424a-a054-8e1722211686",
+          "name": "Get a chart by id (Superset proxy)",
+          "request": {
+            "name": "Get a chart by id (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "chart",
+                ":pk"
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The Superset object primary key (id)."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "802593b5-ba01-4ada-89e7-51cf30e62a80",
+              "name": "A single chart.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "chart",
+                    ":pk"
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The Superset object primary key (id)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61c47dff-e4e3-4485-8620-ae23617fd710",
+          "name": "Query chart data (Superset proxy)",
+          "request": {
+            "name": "Query chart data (Superset proxy)",
+            "description": {
+              "content": "Executes a chart data query and returns the result payload, the same endpoint Superset uses to populate visualizations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "chart",
+                "data"
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "74be1ec7-9f5f-4a95-89a5-63aff6b8761c",
+              "name": "Chart data result.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "chart",
+                    "data"
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.app.preset.io",
+      "key": "baseUrl"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-workspace",
+      "key": "workspaceSlug"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us2a",
+      "key": "region"
+    }
+  ],
+  "info": {
+    "_postman_id": "442554e6-b497-4cb1-880e-e47b7bc68353",
+    "name": "Preset Authentication Charts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.\n\nContact Support:\n Name: Preset Support",
+      "type": "text/plain"
+    }
+  }
+}

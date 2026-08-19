@@ -1,0 +1,381 @@
+{
+  "item": [
+    {
+      "id": "1bfcd0a4-9d87-4edd-ab15-02bc49622074",
+      "name": "Databases",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8171a300-7a71-4540-99f7-925971ce78b3",
+          "name": "List database connections (Superset proxy)",
+          "request": {
+            "name": "List database connections (Superset proxy)",
+            "description": {
+              "content": "Per-workspace proxy to the Apache Superset Database API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "database",
+                ""
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Superset Rison/JSON-encoded query for filtering, ordering, and pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "184ff71d-34ed-41c0-b49b-f9697d324567",
+              "name": "A page of database connections.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "database",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9878,\n  \"ids\": [\n    8638,\n    7216\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d05ec5a3-532d-417a-8fd5-0f60dffc4f1a",
+          "name": "Create a database connection (Superset proxy)",
+          "request": {
+            "name": "Create a database connection (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "database",
+                ""
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96c6784d-8859-464f-b529-6976edd04fc0",
+              "name": "The created database connection.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "database",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef6e512a-000c-4da1-bcdb-f0abf7c83b8a",
+          "name": "Get a database connection by id (Superset proxy)",
+          "request": {
+            "name": "Get a database connection by id (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "database",
+                ":pk"
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The Superset object primary key (id)."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "33f5f5f4-7876-489f-9ba8-ea1160bc6dde",
+              "name": "A single database connection.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "database",
+                    ":pk"
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The Superset object primary key (id)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.app.preset.io",
+      "key": "baseUrl"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-workspace",
+      "key": "workspaceSlug"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us2a",
+      "key": "region"
+    }
+  ],
+  "info": {
+    "_postman_id": "a23c19fd-0600-4dbe-8649-1e07a1946dc7",
+    "name": "Preset Authentication Databases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.\n\nContact Support:\n Name: Preset Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "item": [
+    {
+      "id": "d88bdf00-5815-4825-b9c1-6de618a05a90",
+      "name": "Authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e4927d2-d125-4959-a012-9a35efe4c47d",
+          "name": "Exchange API token credentials for a JWT access token",
+          "request": {
+            "name": "Exchange API token credentials for a JWT access token",
+            "description": {
+              "content": "Exchanges an API token name and secret (generated in Preset account settings) for a short-lived JWT access token valid for a few hours.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "auth",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"secret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd118745-2997-468a-9091-84598affcd73",
+              "name": "A JWT access token payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "auth",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"secret\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payload\": {\n    \"access_token\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23da004b-9175-4903-9fd9-f9938c90d50b",
+              "name": "Invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "auth",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"secret\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.app.preset.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7fb3799a-e657-4d1b-8147-ab2e944e9f82",
+    "name": "Preset Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.\n\nContact Support:\n Name: Preset Support",
+      "type": "text/plain"
+    }
+  }
+}

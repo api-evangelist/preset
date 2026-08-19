@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Preset Authentication Workspaces API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List workspaces in a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.app.preset.io/v1/teams/:teamName/workspaces/",
+            "params": [
+              {
+                "name": "teamName",
+                "value": "",
+                "type": "path",
+                "description": "The team name (slug)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the workspaces belonging to a team, including each workspace name (slug) and region used to construct the workspace proxy hostname."
+        },
+        {
+          "info": {
+            "name": "Create a workspace in a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/v1/teams/:teamName/workspaces/",
+            "params": [
+              {
+                "name": "teamName",
+                "value": "",
+                "type": "path",
+                "description": "The team name (slug)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new Superset-backed workspace within a team."
+        },
+        {
+          "info": {
+            "name": "Create a guest token for an embedded dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/v1/teams/:teamName/workspaces/:workspaceName/guest-token/",
+            "params": [
+              {
+                "name": "teamName",
+                "value": "",
+                "type": "path",
+                "description": "The team name (slug)."
+              },
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The workspace name (slug)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mints a short-lived guest token (expires after about five minutes) that authenticates an end user to view an embedded dashboard for the given workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Preset Authentication Charts API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Charts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List charts (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.app.preset.io/api/v1/chart/",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Superset Rison/JSON-encoded query for filtering, ordering, and pagination."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Per-workspace proxy to the Apache Superset Chart API."
+        },
+        {
+          "info": {
+            "name": "Create a chart (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/api/v1/chart/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a chart (Superset proxy)"
+        },
+        {
+          "info": {
+            "name": "Get a chart by id (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.app.preset.io/api/v1/chart/:pk",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The Superset object primary key (id)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a chart by id (Superset proxy)"
+        },
+        {
+          "info": {
+            "name": "Query chart data (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/api/v1/chart/data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Executes a chart data query and returns the result payload, the same endpoint Superset uses to populate visualizations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

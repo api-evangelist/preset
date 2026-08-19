@@ -1,0 +1,122 @@
+{
+  "item": [
+    {
+      "id": "42f3d3ce-6b62-46af-86e1-4e803522750a",
+      "name": "Teams",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c0b0b3e7-e95a-43a4-bb58-3fbb220861d5",
+          "name": "List teams",
+          "request": {
+            "name": "List teams",
+            "description": {
+              "content": "Returns the teams the authenticated principal belongs to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "teams",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "993da583-cf38-495c-8ca3-1fd11984b760",
+              "name": "A list of teams.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "teams",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payload\": [\n    {\n      \"id\": 5592,\n      \"name\": \"string\",\n      \"title\": \"string\"\n    },\n    {\n      \"id\": 7650,\n      \"name\": \"string\",\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.app.preset.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7bc6b349-1e3a-494c-9084-83ec2ece91ad",
+    "name": "Preset Authentication Teams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.\n\nContact Support:\n Name: Preset Support",
+      "type": "text/plain"
+    }
+  }
+}

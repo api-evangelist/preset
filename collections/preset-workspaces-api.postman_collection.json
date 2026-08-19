@@ -1,0 +1,422 @@
+{
+  "item": [
+    {
+      "id": "e9b9a8a8-148c-4808-948c-6a87384acf58",
+      "name": "Workspaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9cba7357-7982-458d-a538-26cd40143af8",
+          "name": "List workspaces in a team",
+          "request": {
+            "name": "List workspaces in a team",
+            "description": {
+              "content": "Returns the workspaces belonging to a team, including each workspace name (slug) and region used to construct the workspace proxy hostname.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "teams",
+                ":teamName",
+                "workspaces",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamName",
+                  "description": "(Required) The team name (slug)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "788cd452-8990-4a3d-90b9-6ed536cb49dd",
+              "name": "A list of workspaces.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "teams",
+                    ":teamName",
+                    "workspaces",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamName",
+                      "description": "(Required) The team name (slug)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payload\": [\n    {\n      \"id\": 6362,\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"region\": \"string\",\n      \"hostname\": \"string\"\n    },\n    {\n      \"id\": 8330,\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"region\": \"string\",\n      \"hostname\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecb390d0-092b-4fb6-9ffa-08ff5b57ef4a",
+          "name": "Create a workspace in a team",
+          "request": {
+            "name": "Create a workspace in a team",
+            "description": {
+              "content": "Creates a new Superset-backed workspace within a team.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "teams",
+                ":teamName",
+                "workspaces",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamName",
+                  "description": "(Required) The team name (slug)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"region\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "31b91d1b-c045-4a10-b023-d586eb98014d",
+              "name": "The created workspace.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "teams",
+                    ":teamName",
+                    "workspaces",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamName",
+                      "description": "(Required) The team name (slug)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"region\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1270,\n  \"name\": \"string\",\n  \"title\": \"string\",\n  \"region\": \"string\",\n  \"hostname\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe37c936-2f4d-43d3-83d4-613bcd5fe124",
+          "name": "Create a guest token for an embedded dashboard",
+          "request": {
+            "name": "Create a guest token for an embedded dashboard",
+            "description": {
+              "content": "Mints a short-lived guest token (expires after about five minutes) that authenticates an end user to view an embedded dashboard for the given workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "teams",
+                ":teamName",
+                "workspaces",
+                ":workspaceName",
+                "guest-token",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamName",
+                  "description": "(Required) The team name (slug)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceName",
+                  "description": "(Required) The workspace name (slug)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"<object>\",\n  \"resources\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"rls\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96d17f9e-d8fc-44b5-a1a6-101cb62ff5cc",
+              "name": "A guest token payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "teams",
+                    ":teamName",
+                    "workspaces",
+                    ":workspaceName",
+                    "guest-token",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamName",
+                      "description": "(Required) The team name (slug)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The workspace name (slug)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": \"<object>\",\n  \"resources\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"rls\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payload\": {\n    \"token\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.app.preset.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "12cf4364-978d-44e0-8534-47196450ec4d",
+    "name": "Preset Authentication Workspaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.\n\nContact Support:\n Name: Preset Support",
+      "type": "text/plain"
+    }
+  }
+}

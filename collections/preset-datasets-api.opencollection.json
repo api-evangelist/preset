@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Preset Authentication Datasets API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List datasets (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.app.preset.io/api/v1/dataset/",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Superset Rison/JSON-encoded query for filtering, ordering, and pagination."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Per-workspace proxy to the Apache Superset Dataset API."
+        },
+        {
+          "info": {
+            "name": "Create a dataset (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/api/v1/dataset/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a dataset (Superset proxy)"
+        },
+        {
+          "info": {
+            "name": "Get a dataset by id (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.app.preset.io/api/v1/dataset/:pk",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The Superset object primary key (id)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a dataset by id (Superset proxy)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

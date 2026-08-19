@@ -1,0 +1,669 @@
+{
+  "item": [
+    {
+      "id": "a4417f76-aa95-455e-95e7-01e355b4ecaa",
+      "name": "Dashboards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0fdfedd9-a7ff-4824-8a2d-cd5ed4f5dc2b",
+          "name": "List dashboards (Superset proxy)",
+          "request": {
+            "name": "List dashboards (Superset proxy)",
+            "description": {
+              "content": "Per-workspace proxy to the Apache Superset Dashboard API. Lists dashboards in the workspace with optional Rison/JSON query filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                ""
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Superset Rison/JSON-encoded query for filtering, ordering, and pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f4fe69a3-e497-4d6a-970b-f5619a3113f8",
+              "name": "A page of dashboards.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dashboard",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 752,\n  \"ids\": [\n    2711,\n    1178\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c3d8132-bca7-46ae-a240-ac2c2a4ad698",
+          "name": "Create a dashboard (Superset proxy)",
+          "request": {
+            "name": "Create a dashboard (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                ""
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2dbf816-d550-4941-b462-163412a39908",
+              "name": "The created dashboard.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dashboard",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afd2077f-548b-4f0c-ad62-994282b0149d",
+          "name": "Get a dashboard by id (Superset proxy)",
+          "request": {
+            "name": "Get a dashboard by id (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                ":pk"
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The Superset object primary key (id)."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2d5b8bfa-da06-40d7-ad67-c3eb04cb2cda",
+              "name": "A single dashboard.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dashboard",
+                    ":pk"
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The Superset object primary key (id)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60187006-4459-49e4-a11b-c8c96911d40a",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dashboard",
+                    ":pk"
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The Superset object primary key (id)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50233536-664e-4ee9-a01b-0135961b0e9e",
+          "name": "Update a dashboard (Superset proxy)",
+          "request": {
+            "name": "Update a dashboard (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                ":pk"
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The Superset object primary key (id)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9190afef-bed0-42e7-a5b9-157e8d1c9a32",
+              "name": "The updated dashboard.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dashboard",
+                    ":pk"
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The Superset object primary key (id)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdd10b79-7e00-4ed7-b1e5-8fc95fa5edd4",
+          "name": "Delete a dashboard (Superset proxy)",
+          "request": {
+            "name": "Delete a dashboard (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                ":pk"
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The Superset object primary key (id)."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "73d087bb-c5b6-490c-b6cf-d2468dc4ea52",
+              "name": "Deleted.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dashboard",
+                    ":pk"
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The Superset object primary key (id)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.app.preset.io",
+      "key": "baseUrl"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-workspace",
+      "key": "workspaceSlug"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us2a",
+      "key": "region"
+    }
+  ],
+  "info": {
+    "_postman_id": "e1a81a87-cab7-4c4d-9a51-12ebe7f5fac8",
+    "name": "Preset Authentication Dashboards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.\n\nContact Support:\n Name: Preset Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Preset Authentication Dashboards API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dashboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List dashboards (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.app.preset.io/api/v1/dashboard/",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Superset Rison/JSON-encoded query for filtering, ordering, and pagination."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Per-workspace proxy to the Apache Superset Dashboard API. Lists dashboards in the workspace with optional Rison/JSON query filtering."
+        },
+        {
+          "info": {
+            "name": "Create a dashboard (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/api/v1/dashboard/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a dashboard (Superset proxy)"
+        },
+        {
+          "info": {
+            "name": "Get a dashboard by id (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.app.preset.io/api/v1/dashboard/:pk",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The Superset object primary key (id)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a dashboard by id (Superset proxy)"
+        },
+        {
+          "info": {
+            "name": "Update a dashboard (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.app.preset.io/api/v1/dashboard/:pk",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The Superset object primary key (id)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a dashboard (Superset proxy)"
+        },
+        {
+          "info": {
+            "name": "Delete a dashboard (Superset proxy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.app.preset.io/api/v1/dashboard/:pk",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The Superset object primary key (id)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a dashboard (Superset proxy)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

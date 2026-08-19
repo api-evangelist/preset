@@ -1,0 +1,381 @@
+{
+  "item": [
+    {
+      "id": "48fa12e9-6f69-439d-9cf5-02af2211d6eb",
+      "name": "Datasets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3c53ff6-1af8-4feb-be71-89d07b74cc3e",
+          "name": "List datasets (Superset proxy)",
+          "request": {
+            "name": "List datasets (Superset proxy)",
+            "description": {
+              "content": "Per-workspace proxy to the Apache Superset Dataset API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "dataset",
+                ""
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Superset Rison/JSON-encoded query for filtering, ordering, and pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "973288ad-fb11-4e55-a834-dd7c553026c0",
+              "name": "A page of datasets.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dataset",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9247,\n  \"ids\": [\n    2083,\n    1555\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d0c6b22-013e-4dee-bcb0-d67a3e810827",
+          "name": "Create a dataset (Superset proxy)",
+          "request": {
+            "name": "Create a dataset (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "dataset",
+                ""
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5591d78-5a7f-49ad-abac-87044280ec52",
+              "name": "The created dataset.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dataset",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6cbe6f86-67d2-4fe1-a6fe-a6c309a97509",
+          "name": "Get a dataset by id (Superset proxy)",
+          "request": {
+            "name": "Get a dataset by id (Superset proxy)",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "dataset",
+                ":pk"
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The Superset object primary key (id)."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "69e4ce66-056a-4d03-a56a-3afc6245133a",
+              "name": "A single dataset.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dataset",
+                    ":pk"
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The Superset object primary key (id)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.app.preset.io",
+      "key": "baseUrl"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-workspace",
+      "key": "workspaceSlug"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us2a",
+      "key": "region"
+    }
+  ],
+  "info": {
+    "_postman_id": "5cd9b410-b876-4e2f-ab43-0f72689e908e",
+    "name": "Preset Authentication Datasets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.\n\nContact Support:\n Name: Preset Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "item": [
+    {
+      "id": "3427fbc3-999f-4ecd-8513-05217aadcdeb",
+      "name": "SQL Lab",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e5a6704-7b0e-4347-b73d-1325f4fb8ba8",
+          "name": "Execute a SQL query (Superset proxy)",
+          "request": {
+            "name": "Execute a SQL query (Superset proxy)",
+            "description": {
+              "content": "Per-workspace proxy to the Apache Superset SQL Lab execute endpoint. Runs an ad hoc SQL query against a connected database and returns the result set or an async query id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "sqllab",
+                "execute",
+                ""
+              ],
+              "host": [
+                "{{workspaceSlug}}",
+                "{{region}}",
+                "app",
+                "preset",
+                "io"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"database_id\": \"<integer>\",\n  \"sql\": \"<string>\",\n  \"schema\": \"<string>\",\n  \"runAsync\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "92b1c492-ea1a-425c-9772-9bca0b3323be",
+              "name": "Query results.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "sqllab",
+                    "execute",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"database_id\": \"<integer>\",\n  \"sql\": \"<string>\",\n  \"schema\": \"<string>\",\n  \"runAsync\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9901fc9b-869c-40d9-a7a5-568ce660e47a",
+              "name": "Async query accepted.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "sqllab",
+                    "execute",
+                    ""
+                  ],
+                  "host": [
+                    "{{workspaceSlug}}",
+                    "{{region}}",
+                    "app",
+                    "preset",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"database_id\": \"<integer>\",\n  \"sql\": \"<string>\",\n  \"schema\": \"<string>\",\n  \"runAsync\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.app.preset.io",
+      "key": "baseUrl"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-workspace",
+      "key": "workspaceSlug"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us2a",
+      "key": "region"
+    }
+  ],
+  "info": {
+    "_postman_id": "7bf6b822-9909-41a4-a082-22b55c30ea5b",
+    "name": "Preset Authentication SQL Lab API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.\n\nContact Support:\n Name: Preset Support",
+      "type": "text/plain"
+    }
+  }
+}

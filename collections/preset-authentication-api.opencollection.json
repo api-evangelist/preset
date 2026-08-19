@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Preset Authentication API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exchange API token credentials for a JWT access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.app.preset.io/v1/auth/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchanges an API token name and secret (generated in Preset account settings) for a short-lived JWT access token valid for a few hours."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
