@@ -145,6 +145,8 @@ apis:
   humanURL: https://api-docs.preset.io/
   baseURL: https://api.app.preset.io/v1
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
