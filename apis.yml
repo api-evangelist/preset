@@ -7,6 +7,18 @@ description: Preset is a managed cloud BI and analytics platform powered by Apac
   workspaces, users, guest tokens) at https://api.app.preset.io with a per-workspace
   proxy to the underlying Superset REST API for charts, dashboards, datasets,
   databases, and SQL Lab.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
