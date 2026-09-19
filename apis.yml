@@ -35,6 +35,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/preset.png
 tags:
+- Business Intelligence
+- Analytics
+- Superset
+- Dashboards
+- Data Visualization
+tags_raw:
 - BI
 - Analytics
 - Superset
@@ -104,6 +110,8 @@ apis:
   humanURL: https://api-docs.preset.io/
   baseURL: https://api.app.preset.io/v1
   tags:
+  - Database
+  tags_raw:
   - Databases
   properties:
   - type: OpenAPI
@@ -178,6 +186,8 @@ apis:
   humanURL: https://api-docs.preset.io/
   baseURL: https://api.app.preset.io/v1
   tags:
+  - Workspace
+  tags_raw:
   - Workspaces
   properties:
   - type: OpenAPI
