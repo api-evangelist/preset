@@ -1,0 +1,30 @@
+# Front Door AI Index — preset — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: preset
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.preset.io
+  final_host: preset.io
+  ownership: own
+  owner: preset
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 15
+  host_score: 15
+  density: 26.69
+  words: 562
+  tiers:
+    agentic: 6
+    core: 9
+    model: 0
+  ambiguous: 4
+  top_terms:
+    AI: 9
+    intelligence: 3
+    MCP: 2
+    chatbot: 2
+    conversational AI: 2
+    agent: 1

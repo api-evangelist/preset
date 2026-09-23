@@ -1,14 +1,7 @@
 {
   "provider": "preset",
   "sources": [
-    "preset-authentication-api-openapi.yml",
-    "preset-charts-api-openapi.yml",
-    "preset-dashboards-api-openapi.yml",
-    "preset-databases-api-openapi.yml",
-    "preset-datasets-api-openapi.yml",
-    "preset-sql-lab-api-openapi.yml",
-    "preset-teams-api-openapi.yml",
-    "preset-workspaces-api-openapi.yml"
+    "_original/preset-openapi.yml"
   ],
   "outputs": [
     "preset-authentication-api-openapi.yml",
@@ -23,6 +16,27 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "preset-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "preset-openapi.yml: declared missing tag: Authentication",
+    "preset-openapi.yml: declared missing tag: Charts",
+    "preset-openapi.yml: declared missing tag: Dashboards",
+    "preset-openapi.yml: declared missing tag: Databases",
+    "preset-openapi.yml: declared missing tag: Datasets",
+    "preset-openapi.yml: declared missing tag: SQL Lab",
+    "preset-openapi.yml: declared missing tag: Teams",
+    "preset-openapi.yml: declared missing tag: Workspaces",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "preset-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "preset-charts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "preset-dashboards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "preset-databases-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "preset-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "preset-sql-lab-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "preset-teams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "preset-workspaces-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

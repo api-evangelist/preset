@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Preset Authentication Workspaces API
-  description: 'Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.'
+  title: Preset Workspaces API
+  description: Specification of the Preset API.
   termsOfService: https://preset.io/terms-and-conditions/
   contact:
     name: Preset Support
@@ -90,22 +90,29 @@ paths:
                 $ref: '#/components/schemas/GuestTokenResponse'
 components:
   schemas:
-    GuestTokenRequest:
+    Workspace:
       type: object
       properties:
-        user:
-          type: object
-          description: Identity attributes for the guest user.
-        resources:
+        id:
+          type: integer
+        name:
+          type: string
+          description: The workspace slug used in the proxy hostname.
+        title:
+          type: string
+        region:
+          type: string
+          description: The workspace region used in the proxy hostname.
+        hostname:
+          type: string
+          description: Fully qualified workspace hostname, e.g. my-workspace.us2a.app.preset.io.
+    WorkspaceList:
+      type: object
+      properties:
+        payload:
           type: array
           items:
-            type: object
-          description: The embedded resources (e.g. dashboard id) being granted.
-        rls:
-          type: array
-          items:
-            type: object
-          description: Row level security rules applied to the guest session.
+            $ref: '#/components/schemas/Workspace'
     GuestTokenResponse:
       type: object
       properties:
@@ -124,42 +131,35 @@ components:
           type: string
         region:
           type: string
-    WorkspaceList:
+    GuestTokenRequest:
       type: object
       properties:
-        payload:
+        user:
+          type: object
+          description: Identity attributes for the guest user.
+        resources:
           type: array
           items:
-            $ref: '#/components/schemas/Workspace'
-    Workspace:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-          description: The workspace slug used in the proxy hostname.
-        title:
-          type: string
-        region:
-          type: string
-          description: The workspace region used in the proxy hostname.
-        hostname:
-          type: string
-          description: Fully qualified workspace hostname, e.g. my-workspace.us2a.app.preset.io.
+            type: object
+          description: The embedded resources (e.g. dashboard id) being granted.
+        rls:
+          type: array
+          items:
+            type: object
+          description: Row level security rules applied to the guest session.
   parameters:
-    TeamName:
-      name: teamName
-      in: path
-      required: true
-      description: The team name (slug).
-      schema:
-        type: string
     WorkspaceName:
       name: workspaceName
       in: path
       required: true
       description: The workspace name (slug).
+      schema:
+        type: string
+    TeamName:
+      name: teamName
+      in: path
+      required: true
+      description: The team name (slug).
       schema:
         type: string
   securitySchemes:

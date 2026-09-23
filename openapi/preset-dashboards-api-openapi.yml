@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Preset Authentication Dashboards API
-  description: 'Specification of the Preset API. Preset is a managed cloud BI and analytics platform powered by Apache Superset. The API has two surfaces: the Preset Manager API at https://api.app.preset.io (authentication, teams, workspaces, guest tokens) and a per-workspace proxy to the underlying Apache Superset REST API reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io. Authenticate by exchanging an API token name and secret at POST /v1/auth/ for a JWT, then pass it as a Bearer token on subsequent requests.'
+  title: Preset Dashboards API
+  description: Specification of the Preset API.
   termsOfService: https://preset.io/terms-and-conditions/
   contact:
     name: Preset Support
@@ -138,13 +138,6 @@ paths:
           description: Deleted.
 components:
   parameters:
-    RisonQuery:
-      name: q
-      in: query
-      required: false
-      description: Superset Rison/JSON-encoded query for filtering, ordering, and pagination.
-      schema:
-        type: string
     Pk:
       name: pk
       in: path
@@ -152,6 +145,13 @@ components:
       description: The Superset object primary key (id).
       schema:
         type: integer
+    RisonQuery:
+      name: q
+      in: query
+      required: false
+      description: Superset Rison/JSON-encoded query for filtering, ordering, and pagination.
+      schema:
+        type: string
   schemas:
     SupersetListResponse:
       type: object
