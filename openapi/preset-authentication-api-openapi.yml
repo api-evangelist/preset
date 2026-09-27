@@ -46,6 +46,15 @@ paths:
           description: Invalid credentials.
 components:
   schemas:
+    AuthResponse:
+      type: object
+      properties:
+        payload:
+          type: object
+          properties:
+            access_token:
+              type: string
+              description: The JWT access token used as a Bearer token.
     AuthRequest:
       type: object
       required:
@@ -58,15 +67,6 @@ components:
         secret:
           type: string
           description: The API token secret.
-    AuthResponse:
-      type: object
-      properties:
-        payload:
-          type: object
-          properties:
-            access_token:
-              type: string
-              description: The JWT access token used as a Bearer token.
   securitySchemes:
     bearerAuth:
       type: http

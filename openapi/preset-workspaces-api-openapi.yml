@@ -90,38 +90,6 @@ paths:
                 $ref: '#/components/schemas/GuestTokenResponse'
 components:
   schemas:
-    Workspace:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-          description: The workspace slug used in the proxy hostname.
-        title:
-          type: string
-        region:
-          type: string
-          description: The workspace region used in the proxy hostname.
-        hostname:
-          type: string
-          description: Fully qualified workspace hostname, e.g. my-workspace.us2a.app.preset.io.
-    WorkspaceList:
-      type: object
-      properties:
-        payload:
-          type: array
-          items:
-            $ref: '#/components/schemas/Workspace'
-    GuestTokenResponse:
-      type: object
-      properties:
-        payload:
-          type: object
-          properties:
-            token:
-              type: string
-              description: The short-lived guest token.
     WorkspaceCreate:
       type: object
       required:
@@ -147,6 +115,38 @@ components:
           items:
             type: object
           description: Row level security rules applied to the guest session.
+    WorkspaceList:
+      type: object
+      properties:
+        payload:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workspace'
+    GuestTokenResponse:
+      type: object
+      properties:
+        payload:
+          type: object
+          properties:
+            token:
+              type: string
+              description: The short-lived guest token.
+    Workspace:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          description: The workspace slug used in the proxy hostname.
+        title:
+          type: string
+        region:
+          type: string
+          description: The workspace region used in the proxy hostname.
+        hostname:
+          type: string
+          description: Fully qualified workspace hostname, e.g. my-workspace.us2a.app.preset.io.
   parameters:
     WorkspaceName:
       name: workspaceName
