@@ -40,6 +40,13 @@ paths:
                 $ref: '#/components/schemas/TeamList'
 components:
   schemas:
+    TeamList:
+      type: object
+      properties:
+        payload:
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'
     Team:
       type: object
       properties:
@@ -50,13 +57,6 @@ components:
           description: The team name (slug).
         title:
           type: string
-    TeamList:
-      type: object
-      properties:
-        payload:
-          type: array
-          items:
-            $ref: '#/components/schemas/Team'
   securitySchemes:
     bearerAuth:
       type: http

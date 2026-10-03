@@ -138,13 +138,6 @@ paths:
           description: Deleted.
 components:
   parameters:
-    Pk:
-      name: pk
-      in: path
-      required: true
-      description: The Superset object primary key (id).
-      schema:
-        type: integer
     RisonQuery:
       name: q
       in: query
@@ -152,6 +145,13 @@ components:
       description: Superset Rison/JSON-encoded query for filtering, ordering, and pagination.
       schema:
         type: string
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The Superset object primary key (id).
+      schema:
+        type: integer
   schemas:
     SupersetListResponse:
       type: object

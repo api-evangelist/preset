@@ -90,47 +90,6 @@ paths:
                 $ref: '#/components/schemas/GuestTokenResponse'
 components:
   schemas:
-    WorkspaceCreate:
-      type: object
-      required:
-      - title
-      properties:
-        title:
-          type: string
-        region:
-          type: string
-    GuestTokenRequest:
-      type: object
-      properties:
-        user:
-          type: object
-          description: Identity attributes for the guest user.
-        resources:
-          type: array
-          items:
-            type: object
-          description: The embedded resources (e.g. dashboard id) being granted.
-        rls:
-          type: array
-          items:
-            type: object
-          description: Row level security rules applied to the guest session.
-    WorkspaceList:
-      type: object
-      properties:
-        payload:
-          type: array
-          items:
-            $ref: '#/components/schemas/Workspace'
-    GuestTokenResponse:
-      type: object
-      properties:
-        payload:
-          type: object
-          properties:
-            token:
-              type: string
-              description: The short-lived guest token.
     Workspace:
       type: object
       properties:
@@ -147,19 +106,60 @@ components:
         hostname:
           type: string
           description: Fully qualified workspace hostname, e.g. my-workspace.us2a.app.preset.io.
+    GuestTokenResponse:
+      type: object
+      properties:
+        payload:
+          type: object
+          properties:
+            token:
+              type: string
+              description: The short-lived guest token.
+    WorkspaceList:
+      type: object
+      properties:
+        payload:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workspace'
+    GuestTokenRequest:
+      type: object
+      properties:
+        user:
+          type: object
+          description: Identity attributes for the guest user.
+        resources:
+          type: array
+          items:
+            type: object
+          description: The embedded resources (e.g. dashboard id) being granted.
+        rls:
+          type: array
+          items:
+            type: object
+          description: Row level security rules applied to the guest session.
+    WorkspaceCreate:
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+        region:
+          type: string
   parameters:
-    WorkspaceName:
-      name: workspaceName
-      in: path
-      required: true
-      description: The workspace name (slug).
-      schema:
-        type: string
     TeamName:
       name: teamName
       in: path
       required: true
       description: The team name (slug).
+      schema:
+        type: string
+    WorkspaceName:
+      name: workspaceName
+      in: path
+      required: true
+      description: The workspace name (slug).
       schema:
         type: string
   securitySchemes:
