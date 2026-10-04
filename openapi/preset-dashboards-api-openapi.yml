@@ -137,6 +137,20 @@ paths:
         '200':
           description: Deleted.
 components:
+  schemas:
+    SupersetListResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        ids:
+          type: array
+          items:
+            type: integer
+        result:
+          type: array
+          items:
+            type: object
   parameters:
     RisonQuery:
       name: q
@@ -152,20 +166,6 @@ components:
       description: The Superset object primary key (id).
       schema:
         type: integer
-  schemas:
-    SupersetListResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-        ids:
-          type: array
-          items:
-            type: integer
-        result:
-          type: array
-          items:
-            type: object
   securitySchemes:
     bearerAuth:
       type: http
