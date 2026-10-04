@@ -1,0 +1,55 @@
+slug: preset
+provider: Preset
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Dashboards
+  spec_file: preset-dashboards-api-openapi.yml
+  capability_id: BC-610.50
+  capability_id_l1: BC-610
+  capability_name: Analytics & BI Management
+  confidence: 0.88
+  evidence: POST /api/v1/dashboard/ 'Create a dashboard (Superset proxy)'; PUT /api/v1/dashboard/{pk}
+    'Update a dashboard (Superset proxy)'
+  reason: Full lifecycle management of BI dashboards in a cloud analytics platform is squarely Analytics
+    & BI delivery.
+- tag: Charts
+  spec_file: preset-charts-api-openapi.yml
+  capability_id: BC-610.50
+  capability_id_l1: BC-610
+  capability_name: Analytics & BI Management
+  confidence: 0.85
+  evidence: GET /api/v1/chart/ 'List charts (Superset proxy)'; POST /api/v1/chart/data 'Query chart data
+    (Superset proxy)'
+  reason: Creating, listing and querying analytical charts in a managed BI platform (Apache Superset)
+    is delivery of reporting/business intelligence artefacts, matching Analytics & BI Management.
+- tag: Databases
+  spec_file: preset-databases-api-openapi.yml
+  capability_id: BC-610
+  capability_id_l1: BC-610
+  capability_name: Information & Data Management
+  confidence: 0.7
+  evidence: GET /api/v1/database/ 'List database connections (Superset proxy)'; POST /api/v1/database/
+    'Create a database connection (Superset proxy)'
+  reason: Managing database connections for the BI workspace is information/data management, but the evidence
+    does not clearly distinguish between BI data-source enablement and data architecture, so only the
+    L1 is asserted.
+- tag: Datasets
+  spec_file: preset-datasets-api-openapi.yml
+  capability_id: BC-610.50
+  capability_id_l1: BC-610
+  capability_name: Analytics & BI Management
+  confidence: 0.7
+  evidence: POST /api/v1/dataset/ 'Create a dataset (Superset proxy)'
+  reason: Superset datasets are the semantic layer that charts and dashboards are built on, i.e. part
+    of BI/analytics delivery; mapping at L2 with moderate confidence since datasets also touch data modelling.

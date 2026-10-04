@@ -201,6 +201,9 @@ apis:
   - type: APIReference
     url: https://superset.apache.org/docs/api
 common:
+- type: CapabilityMap
+  url: capabilities/preset-capability-edges.yml
+  name: Preset Business Capability Map
 - type: AgenticAccess
   url: agentic-access/preset-agentic-access.yml
 - type: DomainSecurity
