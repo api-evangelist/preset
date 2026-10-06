@@ -47,7 +47,7 @@ tags_raw:
 - Dashboards
 - Data Visualization
 created: '2026-06-20'
-modified: '2026-06-20'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: preset:preset-authentication-api
@@ -201,6 +201,10 @@ apis:
   - type: APIReference
     url: https://superset.apache.org/docs/api
 common:
+- url: https://preset.io/blog/
+  type: Blog
+- url: https://preset.io/rss.xml
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/preset-capability-edges.yml
   name: Preset Business Capability Map
