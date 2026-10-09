@@ -1,17 +1,19 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/preset-openapi.yml
+source: openapi/preset-authentication-api-openapi.yml, openapi/preset-charts-api-openapi.yml,
+  openapi/preset-dashboards-api-openapi.yml, openapi/preset-databases-api-openapi.yml, openapi/preset-datasets-api-openapi.yml,
+  openapi/preset-sql-lab-api-openapi.yml, openapi/preset-teams-api-openapi.yml, openapi/preset-workspaces-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 21
   by_action_class:
-    acting: 11
-    connected: 10
+    acting: 10
+    connected: 11
   by_consequence:
-    write: 11
-    read: 10
+    write: 10
+    read: 11
   human_in_the_loop_required: 0
 operations:
 - path: /v1/auth/
@@ -30,9 +32,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v1/teams/
+- path: /api/v1/chart/
   method: get
-  operationId: getTeams
+  operationId: getCharts
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -40,19 +42,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v1/teams/{teamName}/workspaces/
-  method: get
-  operationId: getWorkspaces
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/teams/{teamName}/workspaces/
+- path: /api/v1/chart/
   method: post
-  operationId: createWorkspace
+  operationId: createChart
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -66,22 +58,26 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v1/teams/{teamName}/workspaces/{workspaceName}/guest-token/
-  method: post
-  operationId: createGuestToken
+- path: /api/v1/chart/{pk}
+  method: get
+  operationId: getChart
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/chart/data
+  method: post
+  operationId: getChartData
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/dashboard/
   method: get
   operationId: getDashboards
@@ -150,94 +146,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v1/chart/
-  method: get
-  operationId: getCharts
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/chart/
-  method: post
-  operationId: createChart
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/chart/{pk}
-  method: get
-  operationId: getChart
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/chart/data
-  method: post
-  operationId: getChartData
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/dataset/
-  method: get
-  operationId: getDatasets
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/dataset/
-  method: post
-  operationId: createDataset
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/dataset/{pk}
-  method: get
-  operationId: getDataset
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /api/v1/database/
   method: get
   operationId: getDatabases
@@ -274,9 +182,97 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api/v1/dataset/
+  method: get
+  operationId: getDatasets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/dataset/
+  method: post
+  operationId: createDataset
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/dataset/{pk}
+  method: get
+  operationId: getDataset
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/sqllab/execute/
   method: post
   operationId: executeSql
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/teams/
+  method: get
+  operationId: getTeams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/teams/{teamName}/workspaces/
+  method: get
+  operationId: getWorkspaces
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/teams/{teamName}/workspaces/
+  method: post
+  operationId: createWorkspace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/teams/{teamName}/workspaces/{workspaceName}/guest-token/
+  method: post
+  operationId: createGuestToken
   x-agentic-access:
     action-class: acting
     consequence: write
