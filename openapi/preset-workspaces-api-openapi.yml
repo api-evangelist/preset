@@ -99,6 +99,15 @@ components:
           type: string
         region:
           type: string
+    GuestTokenResponse:
+      type: object
+      properties:
+        payload:
+          type: object
+          properties:
+            token:
+              type: string
+              description: The short-lived guest token.
     GuestTokenRequest:
       type: object
       properties:
@@ -131,15 +140,6 @@ components:
         hostname:
           type: string
           description: Fully qualified workspace hostname, e.g. my-workspace.us2a.app.preset.io.
-    GuestTokenResponse:
-      type: object
-      properties:
-        payload:
-          type: object
-          properties:
-            token:
-              type: string
-              description: The short-lived guest token.
     WorkspaceList:
       type: object
       properties:
