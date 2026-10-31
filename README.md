@@ -1,4 +1,4 @@
-# Preset (preset)
+# Preset
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,182 +66,130 @@
 
 Preset is a managed cloud BI and analytics platform powered by Apache Superset. Its REST API combines a Preset Manager surface (authentication, teams, workspaces, users, guest tokens) at https://api.app.preset.io with a per-workspace proxy to the underlying Superset REST API for charts, dashboards, datasets, databases, and SQL Lab.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/preset/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/preset/refs/heads/main/apis.yml)
+**Areas:** Business Intelligence · Analytics · Superset · Dashboards · Data Visualization
 
-## Tags
+## Preset on APIs.io
 
-- BI
-- Analytics
-- Superset
-- Dashboards
-- Data Visualization
+Everything profiled for Preset is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/preset/](https://apis.io/providers/preset/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (8)
 
-- **Created:** 2026-06-20
-- **Modified:** 2026-06-20
+- [Preset Authentication API](https://apis.io/apis/preset/preset-authentication-api/) — The Authentication API from Preset — 1 operation(s) for authentication.
+- [Preset Charts API](https://apis.io/apis/preset/preset-charts-api/) — The Charts API from Preset — 3 operation(s) for charts.
+- [Preset Dashboards API](https://apis.io/apis/preset/preset-dashboards-api/) — The Dashboards API from Preset — 2 operation(s) for dashboards.
+- [Preset Databases API](https://apis.io/apis/preset/preset-databases-api/) — The Databases API from Preset — 2 operation(s) for databases.
+- [Preset Datasets API](https://apis.io/apis/preset/preset-datasets-api/) — The Datasets API from Preset — 2 operation(s) for datasets.
+- [Preset SQL Lab API](https://apis.io/apis/preset/preset-sql-lab-api/) — The SQL Lab API from Preset — 1 operation(s) for sql lab.
+- [Preset Teams API](https://apis.io/apis/preset/preset-teams-api/) — The Teams API from Preset — 1 operation(s) for teams.
+- [Preset Workspaces API](https://apis.io/apis/preset/preset-workspaces-api/) — The Workspaces API from Preset — 2 operation(s) for workspaces.
 
-## APIs
+### Published properties
 
-### Preset Auth API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Exchanges an API token name and secret for a short-lived JWT access token via POST /v1/auth/. The returned bearer token authenticates all subsequent Preset Manager and Superset proxy requests.
+#### Agentic access (1)
 
-- **Human URL:** [https://api-docs.preset.io/](https://api-docs.preset.io/)
-- **Base URL:** `https://api.app.preset.io/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Preset Agentic Access](https://apis.io/agentic-access/preset/preset-agentic-access/)
 
-- Authentication
-- JWT
-- API Token
+#### Collections (9)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.preset.io/docs/using-the-api)
-- [API Reference](https://api-docs.preset.io/)
-- [OpenAPI](openapi/preset-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/preset.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/preset.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Preset API](https://apis.io/collections/preset/open-preset/)
+- [Preset Authentication API](https://apis.io/collections/preset/open-preset-authentication-api/)
+- [Preset Authentication Charts API](https://apis.io/collections/preset/open-preset-charts-api/)
+- [Preset Authentication Dashboards API](https://apis.io/collections/preset/open-preset-dashboards-api/)
+- [Preset Authentication Databases API](https://apis.io/collections/preset/open-preset-databases-api/)
+- [Preset Authentication Datasets API](https://apis.io/collections/preset/open-preset-datasets-api/)
+- [Preset Authentication SQL Lab API](https://apis.io/collections/preset/open-preset-sql-lab-api/)
+- [Preset Authentication Teams API](https://apis.io/collections/preset/open-preset-teams-api/)
+- [Preset Authentication Workspaces API](https://apis.io/collections/preset/open-preset-workspaces-api/)
 
-### Preset Teams and Workspaces API
+#### Security (2)
 
-Preset Manager endpoints for listing teams, listing and creating workspaces within a team, managing team membership, and minting guest tokens for embedded dashboards via POST /v1/teams/{team}/workspaces/{workspace}/guest-token/.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://api-docs.preset.io/](https://api-docs.preset.io/)
-- **Base URL:** `https://api.app.preset.io/v1`
+- [Preset Authentication](https://apis.io/security/preset/preset-authentication/)
+- [Preset Domain Security](https://apis.io/security/preset/preset-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Teams
-- Workspaces
-- Users
-- Guest Tokens
+Published plans, tiers and prices.
 
-#### Properties
+- [Preset Plans Pricing](https://apis.io/plans/preset/preset-plans-pricing/)
 
-- [Documentation](https://docs.preset.io/docs/using-the-api)
-- [API Reference](https://api-docs.preset.io/)
-- [OpenAPI](openapi/preset-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/preset.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/preset.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Preset Superset Dashboards API
+Published request limits.
 
-Per-workspace proxy to the Apache Superset Dashboard REST API (/api/v1/dashboard/) for listing, creating, reading, updating, deleting, and exporting dashboards as code. Reached at the workspace hostname pattern {workspace-slug}.{region}.app.preset.io.
+- [Preset Rate Limits](https://apis.io/rate-limits/preset/preset-rate-limits/)
 
-- **Human URL:** [https://superset.apache.org/docs/api](https://superset.apache.org/docs/api)
-- **Base URL:** `https://{workspace-slug}.{region}.app.preset.io/api/v1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Superset Proxy
-- Dashboards
-- BI
+- [Preset Finops](https://apis.io/finops/preset/preset-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.preset.io/docs/using-the-api)
-- [API Reference](https://superset.apache.org/docs/api)
-- [OpenAPI](openapi/preset-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/preset.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/preset.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Preset Superset Charts API
-
-Per-workspace proxy to the Apache Superset Chart REST API (/api/v1/chart/) for CRUD on charts, chart data queries, and import/export of charts as code within a Preset workspace.
-
-- **Human URL:** [https://superset.apache.org/docs/api](https://superset.apache.org/docs/api)
-- **Base URL:** `https://{workspace-slug}.{region}.app.preset.io/api/v1`
-
-#### Tags
-
-- Superset Proxy
-- Charts
-- Visualization
-
-#### Properties
-
-- [Documentation](https://docs.preset.io/docs/using-the-api)
-- [API Reference](https://superset.apache.org/docs/api)
-- [OpenAPI](openapi/preset-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/preset.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/preset.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Preset Superset Datasets API
-
-Per-workspace proxy to the Apache Superset Dataset REST API (/api/v1/dataset/) for managing physical and virtual datasets, columns, metrics, and the semantic layer.
-
-- **Human URL:** [https://superset.apache.org/docs/api](https://superset.apache.org/docs/api)
-- **Base URL:** `https://{workspace-slug}.{region}.app.preset.io/api/v1`
-
-#### Tags
-
-- Superset Proxy
-- Datasets
-- Semantic Layer
-
-#### Properties
-
-- [Documentation](https://docs.preset.io/docs/using-the-api)
-- [API Reference](https://superset.apache.org/docs/api)
-- [OpenAPI](openapi/preset-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/preset.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/preset.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Preset Superset Databases API
-
-Per-workspace proxy to the Apache Superset Database REST API (/api/v1/database/) for managing data source connections, testing connectivity, and listing schemas and tables.
-
-- **Human URL:** [https://superset.apache.org/docs/api](https://superset.apache.org/docs/api)
-- **Base URL:** `https://{workspace-slug}.{region}.app.preset.io/api/v1`
-
-#### Tags
-
-- Superset Proxy
-- Databases
-- Connections
-
-#### Properties
-
-- [Documentation](https://docs.preset.io/docs/using-the-api)
-- [API Reference](https://superset.apache.org/docs/api)
-- [OpenAPI](openapi/preset-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/preset.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/preset.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Preset Superset SQL Lab API
-
-Per-workspace proxy to the Apache Superset SQL Lab REST API (/api/v1/sqllab/execute/) for executing ad hoc SQL against connected databases and retrieving query results.
-
-- **Human URL:** [https://superset.apache.org/docs/api](https://superset.apache.org/docs/api)
-- **Base URL:** `https://{workspace-slug}.{region}.app.preset.io/api/v1`
-
-#### Tags
-
-- Superset Proxy
-- SQL Lab
-- Query
-
-#### Properties
-
-- [Documentation](https://docs.preset.io/docs/using-the-api)
-- [API Reference](https://superset.apache.org/docs/api)
-- [OpenAPI](openapi/preset-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/preset.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/preset.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/preset-io)
-- [LinkedIn](https://www.linkedin.com/company/preset-data)
 - [Website](https://www.preset.io)
 - [Documentation](https://docs.preset.io)
-- [Plans](plans/preset-plans-pricing.yml)
-- [Rate Limits](rate-limits/preset-rate-limits.yml)
-- [Fin Ops](finops/preset-finops.yml)
+- [Blog](https://preset.io/blog/)
+- [GitHub](https://github.com/preset-io)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 45.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/preset/](https://apis.io/providers/preset/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Preset: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/preset/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
